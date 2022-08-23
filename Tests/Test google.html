@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/modelUsers.js"></script>
+</head>
+<style>
+    /* container for sentrering av kartet */
+    /* slik det står nå ved å bruke 100% på classes og divs får man full skjerm og responsive.*/
+    .container {
+        /* height: 100vh; */
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .map {
+        /* height: 80vh;
+        width: 80vw; */
+        height: 100%;
+        width: 100%;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<body>
+
+    <div class="container">
+        <div class="map" id="map"></div>
+        <!-- <div id="map2" style="height: 200px; width: 200px"></div> -->
+    </div>
+
+    <script>
+        // all informasjon om options,styling o.s.v: https://developers.google.com/maps/documentation/javascript/reference
+        
+    // maps.googleapis har en callback funksjon på slutten av stringen(initMap()), denne blir kjørt under etter innlastingen av kartet
+        function initMap() {
+
+            // position data kan sendes også via et objekt: { lat: 41.881832, lng: -87.623177}
+            let mapOptions = {
+                center: new google.maps.LatLng('41.881832', '-87.623177'), // ny google.maps API, LatLng= latitude and longtitude.
+                zoom: 16, // how zoomed in should map be after render.
+                
+            
+            }
+
+            // her peker du til hvor kartet ska tegnes opp. kan legge inn flere under hver sin div, teste ut styling o.s.v
+            let map = new google.maps.Map(document.getElementById("map"),mapOptions);
+            map.setMapTypeId("satellite")
+            map.setTilt(45);
+            // let map2 = new google.maps.Map(document.getElementById("map2"),mapOptions);
+
+        }
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNiHp53DP3ywjTf7j4z0eNgvd1jwDCtQQ&callback=initMap"></script>
+</body>
+</html>
